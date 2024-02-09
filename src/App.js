@@ -5,12 +5,12 @@ import { generos } from './generos';
 function App() {
 
   const apiKey = 'a11b2c0cd5fb0efb5878106808068b4f'
-  const [movie,setMovie] = useState()
+  const [movie, setMovie] = useState()
 
   let page = 1
-  
+
   const handleGenreClick = async (genreId, total_pages) => {
-    if (total_pages > 500) total_pages = 500 
+    if (total_pages > 500) total_pages = 500
 
     page = Math.floor(Math.random() * total_pages)
     if (page === 0) page = 1
@@ -33,25 +33,25 @@ function App() {
     <>
       <div className="genre-container">
         <div>
-        {generos.map(genero =>{
-          return <button key={genero.id} onClick={()=>{handleGenreClick(genero.id,genero.total_pages)}}>{genero.name}</button>
+          {generos.map(genero => {
+            return <button key={genero.id} onClick={() => { handleGenreClick(genero.id, genero.total_pages) }}>{genero.name}</button>
           })}
         </div>
       </div>
       <div className="App">
-      {movie ?
-        <>
-        <div className='filme_data'>
-          <p> {movie?.original_title}</p>
-        </div>
-          <img src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`} alt="Poster do filme não disponível!" />
-        <div className='filme_data'>
-          <p> {movie?.overview ? movie?.overview : 'Sinopse não disponível' }</p>
-        </div>
-        </>
-        : 
-        <h1>Selecione o genero para gerar uma recomendação de filme</h1>
-      }
+        {movie ?
+          <>
+            <div className='filme_data'>
+              <p> {movie?.original_title}</p>
+            </div>
+            <img src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`} alt="Poster do filme não disponível!" />
+            <div className='filme_data'>
+              <p> {movie?.overview ? movie?.overview : 'Sinopse não disponível'}</p>
+            </div>
+          </>
+          :
+          <h1>Selecione o genero para gerar uma recomendação de filme</h1>
+        }
       </div>
     </>
   );
