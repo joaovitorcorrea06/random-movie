@@ -10,7 +10,7 @@ html, body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 85vh;
+  min-height: 85vh;
   background: linear-gradient(45deg, #031f50, #2918c5);
 }
 .filme_data{
@@ -18,11 +18,13 @@ html, body {
 }
 
 .genre-container{
-  height: 15vh;
+  min-height: 15vh;
   display: flex;
+  /* flex-wrap: nowrap; */
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  overflow-x: auto;
+  /* flex-direction: column; */
 }
 
 button {
@@ -53,4 +55,17 @@ img {
   margin: 10px;
   max-width: 500px;
   max-height: 500px;
+}
+
+@media only screen and (max-width: 600px) {
+  .filme_data{
+    width: 100%;
+  }
+  .App {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .genre-container{
+    padding-left: 50px;
+  }
 }

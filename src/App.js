@@ -15,7 +15,7 @@ function App() {
     page = Math.floor(Math.random() * total_pages)
     if (page === 0) page = 1
 
-    const requestUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${genreId}&page=${page}&language=pt-BRvote_count.gte=1000sort_by=vote_average.desc&vote_average.gte=${7}&vote_average.lte=10&include_adult=false&certification_country=US&certification=R`;
+    const requestUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${genreId}&page=${page}&language=pt-BRvote_count.gte=1000sort_by=vote_average.desc&vote_average.gte=${1}&vote_average.lte=10&include_adult=false&certification_country=US&certification=R`;
 
     await fetch(requestUrl)
       .then(response => response.json())
@@ -32,11 +32,11 @@ function App() {
   return (
     <>
       <div className="genre-container">
-        <div>
-          {generos.map(genero => {
-            return <button key={genero.id} onClick={() => { handleGenreClick(genero.id, genero.total_pages) }}>{genero.name}</button>
-          })}
-        </div>
+        {/* <div> */}
+        {generos.map(genero => {
+          return <button key={genero.id} onClick={() => { handleGenreClick(genero.id, genero.total_pages) }}>{genero.name}</button>
+        })}
+        {/* </div> */}
       </div>
       <div className="App">
         {movie ?
